@@ -28,4 +28,14 @@ import java.util.UUID;
 import javax.imageio.ImageIO;
 import org.apache.commons.io.FileUtils;
 import org.imgscalr.Scalr;
+public class Resizer implements RequestHandler<resizerInput, String>
+{
+
+    AmazonS3 s3client;
+    @Override
+    public String handleRequest(resizerInput i, Context cntxt)
+    {
+        String resizedurl = createUrl(i, cntxt);
+    }
+}
 
