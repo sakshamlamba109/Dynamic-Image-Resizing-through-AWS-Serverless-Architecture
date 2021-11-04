@@ -36,6 +36,7 @@ public class Resizer implements RequestHandler<resizerInput, String>
     public String handleRequest(resizerInput i, Context cntxt)
     {
         String resizedurl = createUrl(i, cntxt);
+        return null;
     }
 }
 
