@@ -10,6 +10,7 @@ The user will upload the image into the S3 bucket. As soon as the user clicks re
 With the explosion of device types used to access the Internet with different capabilities, screen sizes, and resolutions, developers must provide images in an array of sizes to ensure a great user experience. Our project intends to simplify this by leveraging AWS cloud services and its serverless architecture.
 
 2) Intoduction:
+This is a project based on complete serverless architecture.
 
 
 
