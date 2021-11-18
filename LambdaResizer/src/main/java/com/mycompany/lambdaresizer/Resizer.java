@@ -36,7 +36,16 @@ public class Resizer implements RequestHandler<resizerInput, String>
     public String handleRequest(resizerInput i, Context cntxt)
     {
         String resizedurl = createUrl(i, cntxt);
+        if (!alreadyExists(resizedurl)) {
+            BufferedImage originalImage = readImage(i, cntxt);
+            if (originalImage != null) {
+                InputStream resizedImage = resizeImage(originalImage, i, cntxt);
+                if (resizedImage != null) {
+                    if (!storeImageInS3(resizedImage, resizedurl, cntxt)) {
+                        return "Failed to store image in S3";
+                    }
         return null;
     }
+    
 }
 
