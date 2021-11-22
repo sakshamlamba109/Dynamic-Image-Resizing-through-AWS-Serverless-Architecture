@@ -5,11 +5,11 @@ It will be a web application that would resize images in a fly!
 Methadology:
 The user will upload the image into the S3 bucket. As soon as the user clicks resie button, the api in the API gateway gets initiated.
 
-#Abstract:
+# Abstract:
 "A picture is worth a thousand words" is a common adage around the world meaning that a single still image can convey multiple ideas and its meaning more effectively than a verbal description. Before images, the internet was a text-only tundra. Today images are an integral part of any website. They serve both as eye candy as well as informational tools. 
 With the explosion of device types used to access the Internet with different capabilities, screen sizes, and resolutions, developers must provide images in an array of sizes to ensure a great user experience. Our project intends to simplify this by leveraging AWS cloud services and its serverless architecture.
 
-#Intoduction:
+# Intoduction:
 Let's assume that our forum application got very popular and we wanted to let our users upload their profile pictures. In different parts of our forum, we will be using different sizes of profile pictures, so whenever a user uploads a new picture, we should resize the image on a data storage. 
 Since the outrage of Covid 19, the pandemic has led all the work to be in online mode, whether it be filling out some important application forms and documents or the increased involvement of social media.
 And in the growing world of social media, people require this kind of tool to produce resized images without losing the quality of the uploaded image. For the same we will create java code that will be implemented through Lambda function to respond to the HTTP upload request and will resize images on the fly. Also, with this architecture, we are again binding the HTTP context with our business context; it means our Lambda function will have to deal with two different contexts.
