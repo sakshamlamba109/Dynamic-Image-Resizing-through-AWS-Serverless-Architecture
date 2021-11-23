@@ -44,8 +44,20 @@ public class Resizer implements RequestHandler<resizerInput, String>
                     if (!storeImageInS3(resizedImage, resizedurl, cntxt)) {
                         return "Failed to store image in S3";
                     }
-        return null;
-    }
-    
-}
+                    else {
+                        return resizedurl;
+                    }
+                }
+                else {
+                    return "Failed to resize Image";
+                }
+            }
+            else {
+                return "Failed to read Original Image";
+            }
+        }
 
+        return resizedurl;
+
+    }
+}
