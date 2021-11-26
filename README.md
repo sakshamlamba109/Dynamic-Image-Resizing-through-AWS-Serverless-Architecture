@@ -21,6 +21,14 @@ AWS API Gateway: It is a fully managed service used by developers for their appl
 # Problem Statement:
 Social media is more than just something we do on the side; it's an integral part of society today. And now, you can make money on social media by becoming an influencer or content creator. First impressions matter, so it's important you have a nice appearance on your social media. Do you ever go to upload an image to social media and realize it’s not the right size? Our Image Resizer allows you to resize your photo for a variety of different social media channels, such as Facebook, Twitter, and Instagram. So no more awkward cropping. You can upload a photo in the required size to your official documents, like a job application or exam application.
 
+# Objectives
+Here we are providing the optimised resized images as the basis of the uploaded sample images. Our system will produce the resized image with the implementation of Serverless architecture using AWS. The use of this architecture will help us to know more about their client needs more effectively and thus improvise their thinking towards customer satisfaction which will give them a wide range of operations.
+Sub-Objective:
+•   We use Java image scaling algorithm for different image scaling techniques.
+•   Implementing Serverless architecture by using AWS lambda having the automatic scaling, built-in high availability, and a pay-for-use billing model to increase agility and optimize costs.
+•   AWS S3 storage for uploaded images.
+
+
 
 
 
