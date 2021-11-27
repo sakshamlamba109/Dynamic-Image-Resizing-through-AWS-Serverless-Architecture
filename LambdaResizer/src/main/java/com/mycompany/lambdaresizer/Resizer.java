@@ -61,3 +61,10 @@ public class Resizer implements RequestHandler<resizerInput, String>
 
     }
 }
+private String createUrl(resizerInput i, Context cntxt)
+    {
+        String resizedUrl = "";
+        String publicUrl = System.getenv("publicurl");
+        String fullHash = "" + Math.abs(i.getUrl().hashCode());
+        String fileName = "";
+}
