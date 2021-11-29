@@ -67,4 +67,13 @@ private String createUrl(resizerInput i, Context cntxt)
         String publicUrl = System.getenv("publicurl");
         String fullHash = "" + Math.abs(i.getUrl().hashCode());
         String fileName = "";
+         try {
+            fileName = Paths.get(new URI(i.getUrl()).getPath()).getFileName().toString();
+        }
+        catch (URISyntaxException ex) {
+            cntxt.getLogger().log("Unable to create url : " + i.getUrl() + " " + ex.getMessage());
+        }
+        resizedUrl = publicUrl + fileName + "-" + fullHash + "-" + i.getWidth() + "-" + i.getHeight();
+        return resizedUrl;
+    }
 }
