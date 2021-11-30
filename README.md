@@ -28,6 +28,24 @@ Sub-Objective:
 •   Implementing Serverless architecture by using AWS lambda having the automatic scaling, built-in high availability, and a pay-for-use billing model to increase agility and optimize costs.
 •   AWS S3 storage for uploaded images.
 
+# Methodology
+AWS Lambda is a serverless computing service provided by Amazon Web Services (AWS). Users of AWS Lambda create functions, self-contained applications written in one of the supported languages and runtimes, and upload them to AWS Lambda, which executes those functions in an efficient and flexible manner. 
+This service will allow users to upload images and resize them without worrying about quality, as we will be using the Java Image-Scaling Library implementing Chris Campbell's incremental scaling algorithm for better quality. The image will be stored in an AWS S3 bucket before being resized.
+
+   The overall process of the Serverless Architecture for Image resizing:
+•   Step 1: Image initially will be stored in the S3 bucket as soon as the user clicks the upload button.
+•   Step 2: Request is transferred to the API Gateway when the resize button is clicked by the user.
+•   Step 3: The Lambda function is triggered by the API. 
+•   Step 4: Image will be fetched from the S3 bucket by the lambda function written in Java, and the image will be resized as specified by the user.
+		Methods for Resizer class in Java:
+•	createUrl: When we create the unique URL for our images, we use the file name, if there is any and add the hash of the full URL as well as the width and height to the URL in the 'readImage' method.
+•	readImage: We'll use Java image IO class to read the original image into a buffered image.
+•	resizeImage: We'll use image scaler to resize the original image to the desired size.
+•	storeImage: It will return the input stream of the resized image to the 'storeImage' method where it will create a temporary file.
+•	alreadyExists: In the Lambda container containing the resized image. It will store that file in the S3 bucket. It will then delete the temporary file. The 'alreadyExists' method will check if the resized image for the requested size and original image URL already exists, so we don't need to resize the same image to the same size multiple times.
+•   Step 5: Resized image is displayed back to the user.
+
+
 
 
 
