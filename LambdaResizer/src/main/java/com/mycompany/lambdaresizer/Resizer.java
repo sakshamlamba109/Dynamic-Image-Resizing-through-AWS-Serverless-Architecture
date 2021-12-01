@@ -76,4 +76,14 @@ private String createUrl(resizerInput i, Context cntxt)
         resizedUrl = publicUrl + fileName + "-" + fullHash + "-" + i.getWidth() + "-" + i.getHeight();
         return resizedUrl;
     }
+ private BufferedImage readImage(resizerInput i, Context cntxt)
+    {
+        try {
+            return ImageIO.read(new URL(i.getUrl()).openStream());
+        }
+        catch (IOException ex) {
+            cntxt.getLogger().log("Failed to read original url " + i.getUrl() + " " + ex.getMessage());
+            return null;
+        }
+    }
 }
