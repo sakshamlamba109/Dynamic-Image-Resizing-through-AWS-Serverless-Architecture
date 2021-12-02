@@ -86,4 +86,19 @@ private String createUrl(resizerInput i, Context cntxt)
             return null;
         }
     }
+
+    private InputStream resizeImage(BufferedImage image, resizerInput i, Context cntxt)
+    {
+        try {
+            BufferedImage img = Scalr.resize(image, Scalr.Method.BALANCED, Scalr.Mode.AUTOMATIC, i.getWidth(), i.getHeight(), Scalr.OP_ANTIALIAS);
+            ByteArrayOutputStream os = new ByteArrayOutputStream();
+            ImageIO.write(img, "gif", os);
+            InputStream is = new ByteArrayInputStream(os.toByteArray());
+            return is;
+        }
+        catch (IOException ex) {
+            cntxt.getLogger().log("Image Resizing failed : " + i.getUrl() + " " + ex.getMessage());
+            return null;
+        }
+    }
 }
