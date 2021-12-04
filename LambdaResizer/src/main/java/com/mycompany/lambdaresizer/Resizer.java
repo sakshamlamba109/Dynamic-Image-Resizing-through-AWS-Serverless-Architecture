@@ -101,4 +101,21 @@ private String createUrl(resizerInput i, Context cntxt)
             return null;
         }
     }
+ private AmazonS3 getS3Client()
+    {
+        if (s3client == null) {
+            s3client = AmazonS3ClientBuilder.defaultClient();
+        }
+        return s3client;
+    }
+
+    private String getS3Key(String resizedUrl)
+    {
+        try {
+            return Paths.get(new URI(resizedUrl).getPath()).getFileName().toString();
+        }
+        catch (URISyntaxException ex) {
+            return "";
+        }
+    }
 }
