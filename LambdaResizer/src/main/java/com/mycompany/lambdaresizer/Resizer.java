@@ -118,4 +118,29 @@ private String createUrl(resizerInput i, Context cntxt)
             return "";
         }
     }
+private Boolean storeImageInS3(InputStream is, String resizedUrl, Context cntxt)
+    {
+        String s3Key = getS3Key(resizedUrl);
+        String bucketName = System.getenv("bucketname");
+        File tempFile = null;
+        try {
+            tempFile = File.createTempFile(UUID.randomUUID().toString(), ".gif");
+            FileUtils.copyInputStreamToFile(is, tempFile);
+            PutObjectRequest por = new PutObjectRequest(bucketName, s3Key, tempFile).withCannedAcl(CannedAccessControlList.PublicRead);
+            PutObjectResult res = getS3Client().putObject(por);
+            cntxt.getLogger().log("Stored in s3 " + bucketName + "/" + s3Key);
+        }
+        catch (IOException ex) {
+            cntxt.getLogger().log("Error creating temp file : " + ex.getMessage());
+            return false;
+        }
+        finally {
+            if (tempFile != null) {
+                tempFile.delete();
+
+            }
+        }
+        return true;
+
+    }
 }
