@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.lambdaresizer;
-
 
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.services.lambda.runtime.Context;
@@ -28,6 +22,11 @@ import java.util.UUID;
 import javax.imageio.ImageIO;
 import org.apache.commons.io.FileUtils;
 import org.imgscalr.Scalr;
+
+/**
+ *
+ * @author Dries Horions <dries@quodlibet.be>
+ */
 public class Resizer implements RequestHandler<resizerInput, String>
 {
 
@@ -60,14 +59,13 @@ public class Resizer implements RequestHandler<resizerInput, String>
         return resizedurl;
 
     }
-}
-private String createUrl(resizerInput i, Context cntxt)
+    private String createUrl(resizerInput i, Context cntxt)
     {
         String resizedUrl = "";
         String publicUrl = System.getenv("publicurl");
         String fullHash = "" + Math.abs(i.getUrl().hashCode());
         String fileName = "";
-         try {
+        try {
             fileName = Paths.get(new URI(i.getUrl()).getPath()).getFileName().toString();
         }
         catch (URISyntaxException ex) {
@@ -76,7 +74,8 @@ private String createUrl(resizerInput i, Context cntxt)
         resizedUrl = publicUrl + fileName + "-" + fullHash + "-" + i.getWidth() + "-" + i.getHeight();
         return resizedUrl;
     }
- private BufferedImage readImage(resizerInput i, Context cntxt)
+
+    private BufferedImage readImage(resizerInput i, Context cntxt)
     {
         try {
             return ImageIO.read(new URL(i.getUrl()).openStream());
@@ -101,7 +100,8 @@ private String createUrl(resizerInput i, Context cntxt)
             return null;
         }
     }
- private AmazonS3 getS3Client()
+
+    private AmazonS3 getS3Client()
     {
         if (s3client == null) {
             s3client = AmazonS3ClientBuilder.defaultClient();
@@ -118,7 +118,8 @@ private String createUrl(resizerInput i, Context cntxt)
             return "";
         }
     }
-private Boolean storeImageInS3(InputStream is, String resizedUrl, Context cntxt)
+
+    private Boolean storeImageInS3(InputStream is, String resizedUrl, Context cntxt)
     {
         String s3Key = getS3Key(resizedUrl);
         String bucketName = System.getenv("bucketname");
@@ -143,4 +144,18 @@ private Boolean storeImageInS3(InputStream is, String resizedUrl, Context cntxt)
         return true;
 
     }
+
+    private Boolean alreadyExists(String resizedUrl)
+    {
+        String bucketname = System.getenv("bucketname");
+        try {
+            getS3Client().getObjectMetadata(bucketname, getS3Key(resizedUrl));
+        }
+        catch (AmazonServiceException e) {
+            return false;
+        }
+        return true;
+    }
+
+
 }
