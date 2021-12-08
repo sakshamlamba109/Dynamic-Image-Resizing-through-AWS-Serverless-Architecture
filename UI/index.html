@@ -14,49 +14,71 @@
   </head>
 
   <body>
-
     <header id="header">
       <div class="header-content-box">
-        <div class="header-content">Dynamic Image Resizing</div>
+        <div class="header-content">
+          Dynamic Image Resizing using Serverless Architecture
+        </div>
       </div>
     </header>
 
     <div class="container">
-
-      <div class="box-1">
+      <!-- <div class="box-1">
         <div class="content-1">
           Select File :
           <button type="button" class="btn-1">Choose File</button>
           <button type="button" class="btn-2">Upload</button>
         </div>
-      </div>
+      </div> -->
 
       <div class="box-2">
         <div class="width">
           <div class="content">Width</div>
-          <div class="content">450</div>
-          <div class="content">1080</div>
-          <div class="content">1920</div>
+          <div class="content">100</div>
+          <div class="content">500</div>
+          <div class="content">750</div>
           <div class="content">1080</div>
         </div>
 
         <div class="height">
           <div class="content">Height</div>
-          <div class="content">450</div>
+          <div class="content">100</div>
+          <div class="content">500</div>
+          <div class="content">750</div>
           <div class="content">1080</div>
-          <div class="content">1080</div>
-          <div class="content">1320</div>
         </div>
 
         <div class="resize">
-          <button type="button" class="btn">Resize</button>
-          <button type="button" class="btn">Resize</button>
-          <button type="button" class="btn">Resize</button>
-          <button type="button" class="btn">Resize</button>
+          <button
+            onClick="window.location.href = 'https://lambdaresizer04.s3.eu-central-1.amazonaws.com/kitten.png-323067787-100-100';"
+            type="button"
+            class="btn"
+          >
+            Resize
+          </button>
+          <button
+            onClick="window.location.href = 'https://lambdaresizer04.s3.eu-central-1.amazonaws.com/kitten.png-323067787-500-500';"
+            type="button"
+            class="btn"
+          >
+            Resize
+          </button>
+          <button
+            onClick="window.location.href = 'https://lambdaresizer04.s3.eu-central-1.amazonaws.com/kitten.png-323067787-750-750';"
+            type="button"
+            class="btn"
+          >
+            Resize
+          </button>
+          <button
+            onClick="window.location.href = 'https://lambdaresizer04.s3.eu-central-1.amazonaws.com/kitten.png-323067787-1080-1080';"
+            type="button"
+            class="btn"
+          >
+            Resize
+          </button>
         </div>
       </div>
-
     </div>
-
   </body>
 </html>

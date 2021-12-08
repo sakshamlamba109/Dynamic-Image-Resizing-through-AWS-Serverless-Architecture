@@ -122,7 +122,7 @@ public class Resizer implements RequestHandler<resizerInput, String>
     private Boolean storeImageInS3(InputStream is, String resizedUrl, Context cntxt)
     {
         String s3Key = getS3Key(resizedUrl);
-        String bucketName = System.getenv("bucketname");
+        String bucketName = System.getenv("bucket");
         File tempFile = null;
         try {
             tempFile = File.createTempFile(UUID.randomUUID().toString(), ".gif");
@@ -147,7 +147,7 @@ public class Resizer implements RequestHandler<resizerInput, String>
 
     private Boolean alreadyExists(String resizedUrl)
     {
-        String bucketname = System.getenv("bucketname");
+        String bucketname = System.getenv("bucket");
         try {
             getS3Client().getObjectMetadata(bucketname, getS3Key(resizedUrl));
         }
