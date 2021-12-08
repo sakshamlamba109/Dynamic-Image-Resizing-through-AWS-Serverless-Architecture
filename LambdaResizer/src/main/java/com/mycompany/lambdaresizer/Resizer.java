@@ -23,10 +23,6 @@ import javax.imageio.ImageIO;
 import org.apache.commons.io.FileUtils;
 import org.imgscalr.Scalr;
 
-/**
- *
- * @author Dries Horions <dries@quodlibet.be>
- */
 public class Resizer implements RequestHandler<resizerInput, String>
 {
 
