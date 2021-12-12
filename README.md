@@ -45,6 +45,11 @@ This service will allow users to upload images and resize them without worrying 
 •	alreadyExists: In the Lambda container containing the resized image. It will store that file in the S3 bucket. It will then delete the temporary file. The 'alreadyExists' method will check if the resized image for the requested size and original image URL already exists, so we don't need to resize the same image to the same size multiple times.
 •   Step 5: Resized image is displayed back to the user.
 
+# Diagrams Used:
+1) Use Case Diagram
+2) State-Chart Diagram
+3) Architecture Diagram
+
 
 
 
