@@ -50,6 +50,9 @@ This service will allow users to upload images and resize them without worrying 
 2) State-Chart Diagram
 3) Architecture Diagram
 
+# Deployment Platform
+-> Amazon Web Services
+
 
 
 
