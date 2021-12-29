@@ -1,4 +1,4 @@
-# Dynamic-Image-Resizing-through-AWS-Serverless-Architecture:
+# Dynamic-Image-Resizing-through-AWS-Serverless-Architecture!
 In this project, we are building a serverless architecture using AWS Lambda, S3 bucket and AWS API Gateway
 It will be a web application that would resize images in a fly!
 Methadology:
